@@ -278,25 +278,6 @@ body::before {
   white-space: nowrap;
 }
 
-.btn-som {
-  background: var(--color-card);
-  border: 2px solid #DDD;
-  border-radius: 20px;
-  padding: 4px 12px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  cursor: pointer;
-  color: var(--color-text);
-  transition: all 0.2s;
-  line-height: 1.4;
-  flex-shrink: 0;
-}
-
-.btn-som:hover {
-  background: #F0F0F0;
-  border-color: #BBB;
-}
-
 .btn-sair {
   background: transparent;
   border: 2px solid #DDD;
@@ -315,31 +296,6 @@ body::before {
   border-color: #E74C3C;
   color: #E74C3C;
   background: #FFF0F0;
-}
-
-.btn-som.muted {
-  opacity: 0.5;
-}
-
-.btn-som-inicio {
-  margin-top: 8px;
-  background: var(--color-card);
-  border: 2px solid #DDD;
-  border-radius: 20px;
-  padding: 4px 14px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  cursor: pointer;
-  color: var(--color-text-light);
-  transition: all 0.2s;
-}
-
-.btn-som-inicio:hover {
-  background: #F0F0F0;
-}
-
-.btn-som-inicio.muted {
-  opacity: 0.5;
 }
 
 .btn-info-inicio {

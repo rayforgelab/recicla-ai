@@ -340,18 +340,6 @@ const game = {
     }
   },
 
-  alternarSom() {
-    this.somAtivado = !this.somAtivado;
-    const btns = document.querySelectorAll('#btn-som, #btn-som-inicio');
-    btns.forEach(btn => {
-      btn.textContent = this.somAtivado ? '🔊 Som' : '🔇 Som';
-      btn.classList.toggle('muted', !this.somAtivado);
-    });
-    if (this.somAtivado) {
-      this.tocarSom('click');
-    }
-  },
-
   criarConfete() {
     const container = document.getElementById('confetti-container');
     const colors = ['#FF6B35', '#FFD93D', '#4CAF50', '#3498DB', '#E74C3C', '#9B59B6', '#2ECC71'];
@@ -420,8 +408,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  document.getElementById('btn-som').addEventListener('click', () => game.alternarSom());
-  document.getElementById('btn-som-inicio').addEventListener('click', () => game.alternarSom());
   document.getElementById('btn-sair').addEventListener('click', () => {
     game.tocarSom('click');
     game.voltarInicio();
