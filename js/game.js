@@ -408,10 +408,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  document.getElementById('btn-sair').addEventListener('click', () => {
-    game.tocarSom('click');
-    game.voltarInicio();
-  });
 
   document.getElementById('btn-info-pontos').addEventListener('click', () => {
     game.tocarSom('click');

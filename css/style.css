@@ -278,25 +278,6 @@ body::before {
   white-space: nowrap;
 }
 
-.btn-sair {
-  background: transparent;
-  border: 2px solid #DDD;
-  border-radius: 20px;
-  padding: 4px 12px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  cursor: pointer;
-  color: var(--color-text-light);
-  transition: all 0.2s;
-  line-height: 1.4;
-  flex-shrink: 0;
-}
-
-.btn-sair:hover {
-  border-color: #E74C3C;
-  color: #E74C3C;
-  background: #FFF0F0;
-}
 
 .btn-info-inicio {
   margin-top: 6px;
