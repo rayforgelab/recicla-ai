@@ -45,6 +45,10 @@ const game = {
     this.indiceAtual = 0;
     this.mostrarTela('tela-jogo');
     this.carregarPergunta();
+    this.preloadImagens();
+    this.questions.forEach(q => {
+      if (q.image) { const img = new Image(); img.src = q.image; }
+    });
   },
 
   mostrarTela(id) {
@@ -123,6 +127,16 @@ const game = {
 
     this.startTime = Date.now();
     this.iniciarTimer();
+    this.preloadImagens();
+  },
+
+  preloadImagens() {
+    for (let i = 1; i <= 3; i++) {
+      const idx = this.indiceAtual + i;
+      if (idx >= this.questions.length) break;
+      const img = new Image();
+      img.src = this.questions[idx].image;
+    }
   },
 
   iniciarTimer() {

@@ -985,3 +985,29 @@ body::before {
 ::-webkit-scrollbar-track { background: var(--color-bg); }
 ::-webkit-scrollbar-thumb { background: var(--color-green); border-radius: 10px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--color-green-dark); }
+
+.site-footer {
+  text-align: center;
+  padding: 20px 20px 24px;
+  font-size: 0.85rem;
+}
+
+.site-footer a {
+  color: var(--color-text-light);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1.5px solid #E0E0E0;
+  background: var(--color-card);
+  transition: all 0.2s;
+  font-weight: 600;
+}
+
+.site-footer a:hover {
+  border-color: #2D3436;
+  color: var(--color-text);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
