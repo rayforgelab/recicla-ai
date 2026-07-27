@@ -5,7 +5,7 @@ const questions = [
     image: "assets/images/items/garrafa-pet.jpg",
     emoji: "",
     category: "plastico",
-    explanation: "A garrafa PET é de plástico. Ela vira roupa e corda nova!",
+    explanation: "A garrafa PET é de plástico. Ela vira tecido para roupas e novos objetos!",
     tip: "PET é o nome do plástico da garrafa."
   },
   {
@@ -69,7 +69,7 @@ const questions = [
     emoji: "",
     category: "vidro",
     explanation: "Pote de vidro é reciclável. Lave antes de jogar fora.",
-    tip: "Pote de vidro vira vaso ou pote de comida."
+    tip: "O vidro pode ser reciclado infinitamente sem perder qualidade!"
   },
   {
     id: 9,
@@ -123,7 +123,7 @@ const questions = [
     emoji: "",
     category: "papel",
     explanation: "Revista é papel. Vai na lixeira azul.",
-    tip: "Doe revistas velhas para os amigos."
+    tip: "Papel reciclado vira papel novo e salva árvores!"
   },
   {
     id: 15,
@@ -145,7 +145,7 @@ const questions = [
   },
   {
     id: 17,
-    item: "Clips de papel",
+    item: "Clips",
     image: "assets/images/items/clips-de-papel.jpg",
     emoji: "",
     category: "metal",
@@ -177,7 +177,7 @@ const questions = [
     emoji: "",
     category: "organico",
     explanation: "Folhas secas viram adubo.",
-    tip: "Folhas secas protegem o solo."
+    tip: "Folhas secas viram adubo rico para as plantas!"
   },
   {
     id: 21,
@@ -207,22 +207,13 @@ const questions = [
     tip: "Fralda demora muito para sumir. Existe fralda ecológica!"
   },
   {
-    id: 24,
-    item: "Isopor",
-    image: "assets/images/items/isopor.jpg",
-    emoji: "",
-    category: "rejeito",
-    explanation: "Isopor é difícil de reciclar. Vai na lixeira cinza.",
-    tip: "Evite isopor. Use papelão!"
-  },
-  {
     id: 25,
     item: "Esponja de cozinha",
     image: "assets/images/items/esponja.jpg",
     emoji: "",
     category: "rejeito",
     explanation: "Esponja não pode ser reciclada. Vai na lixeira cinza.",
-    tip: "Troque a esponja todo mês."
+    tip: "Use esponjas vegetais que são compostáveis!"
   },
   {
     id: 26,

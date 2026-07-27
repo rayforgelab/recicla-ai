@@ -59,7 +59,7 @@ const game = {
 
   atualizarStreak() {
     const el = document.getElementById('indicador-streak');
-    if (this.streak >= 2) {
+    if (this.streak >= 3) {
       el.style.display = 'inline';
       el.textContent = `🔥 ${this.streak}x`;
     } else {
@@ -168,7 +168,7 @@ const game = {
 
   calcularBonusTempo() {
     const elapsed = (Date.now() - this.startTime) / 1000;
-    return Math.max(0, Math.ceil(50 - Math.max(0, elapsed - 0.3) * 5));
+    return Math.max(0, Math.ceil(25 - Math.max(0, elapsed - 2) * 2));
   },
 
   verificarResposta(binId) {
@@ -202,7 +202,7 @@ const game = {
         bonusTempo > 0 ? `⚡ +${bonusTempo} de bônus por rapidez!` : '';
       this.tocarSom('correct');
     } else {
-      this.streak = 0;
+      this.streak = 1;
       this.atualizarStreak();
       document.getElementById('feedback-bonus').textContent = '';
       this.tocarSom('wrong');
@@ -252,6 +252,12 @@ const game = {
     document.getElementById('final-score').textContent = this.score;
     document.getElementById('final-acertos').textContent = this.acertos;
     document.getElementById('total-questions').textContent = this.questions.length;
+
+    if (ranking.precisaDeNome()) {
+      document.getElementById('modal-nome').classList.add('show');
+    } else {
+      ranking.salvar(this.score, this.acertos, this.questions.length);
+    }
 
     const pct = this.acertos / this.questions.length;
     let stars, message;
@@ -421,6 +427,43 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.target === e.currentTarget) {
       game.tocarSom('click');
       document.getElementById('sobreposicao-info').classList.remove('show');
+    }
+  });
+
+  document.getElementById('btn-ranking').addEventListener('click', () => {
+    game.tocarSom('click');
+    game.mostrarTela('tela-ranking');
+    ranking.exibirNaTela();
+  });
+
+  document.getElementById('btn-ranking-finish').addEventListener('click', () => {
+    game.tocarSom('click');
+    game.mostrarTela('tela-ranking');
+    ranking.exibirNaTela();
+  });
+
+  document.getElementById('btn-ranking-voltar').addEventListener('click', () => {
+    game.tocarSom('click');
+    game.voltarInicio();
+  });
+
+  document.getElementById('btn-salvar-nome').addEventListener('click', () => {
+    const input = document.getElementById('input-nome');
+    const nome = input.value.trim();
+    if (nome.length < 2) {
+      input.style.borderColor = '#E74C3C';
+      input.placeholder = 'Digite pelo menos 2 letras';
+      return;
+    }
+    input.style.borderColor = '#2D3436';
+    ranking.salvarNome(nome);
+    document.getElementById('modal-nome').classList.remove('show');
+    ranking.salvar(game.score, game.acertos, game.questions.length);
+  });
+
+  document.getElementById('input-nome').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      document.getElementById('btn-salvar-nome').click();
     }
   });
 });

@@ -59,24 +59,23 @@ A cada acerto consecutivo, o streak aumenta. Ele multiplica os pontos-base:
 | ... | ... |
 | 15º | 150 |
 
-Se errar, o streak volta a zero.
+Se errar, o streak volta para 1 em vez de zerar.
 
 ### ⚡ Bônus por rapidez
 
 Responder rápido dá pontos extras. O bônus diminui com o tempo:
 
 ```
-bônus = max(0, 50 - segundos × 5)
+bônus = max(0, 25 - segundos × 2)
 ```
 
 | Tempo | Bônus |
 |-------|-------|
-| < 0,5s | +50 |
-| 3s | +35 |
-| 5s | +25 |
+| < 2s | +25 |
+| 5s | +19 |
 | 7s | +15 |
-| 9s | +5 |
-| ≥ 10s | 0 |
+| 10s | +9 |
+| ≥ 14,5s | 0 |
 
 Uma barra de tempo no topo do quiz mostra visualmente quanto tempo resta.
 
@@ -86,31 +85,33 @@ Acertando todas as 15 perguntas em menos de 2s cada:
 
 | # | Streak | Base | Bônus | Total |
 |---|--------|------|-------|-------|
-| 1 | ×1 | 10 | +50 | 60 |
-| 2 | ×2 | 20 | +50 | 70 |
-| 3 | ×3 | 30 | +50 | 80 |
-| 4 | ×4 | 40 | +50 | 90 |
-| 5 | ×5 | 50 | +50 | 100 |
-| 6 | ×6 | 60 | +50 | 110 |
-| 7 | ×7 | 70 | +50 | 120 |
-| 8 | ×8 | 80 | +50 | 130 |
-| 9 | ×9 | 90 | +50 | 140 |
-| 10 | ×10 | 100 | +50 | 150 |
-| 11 | ×11 | 110 | +50 | 160 |
-| 12 | ×12 | 120 | +50 | 170 |
-| 13 | ×13 | 130 | +50 | 180 |
-| 14 | ×14 | 140 | +50 | 190 |
-| 15 | ×15 | 150 | +50 | 200 |
+| 1 | ×1 | 10 | +25 | 35 |
+| 2 | ×2 | 20 | +25 | 45 |
+| 3 | ×3 | 30 | +25 | 55 |
+| 4 | ×4 | 40 | +25 | 65 |
+| 5 | ×5 | 50 | +25 | 75 |
+| 6 | ×6 | 60 | +25 | 85 |
+| 7 | ×7 | 70 | +25 | 95 |
+| 8 | ×8 | 80 | +25 | 105 |
+| 9 | ×9 | 90 | +25 | 115 |
+| 10 | ×10 | 100 | +25 | 125 |
+| 11 | ×11 | 110 | +25 | 135 |
+| 12 | ×12 | 120 | +25 | 145 |
+| 13 | ×13 | 130 | +25 | 155 |
+| 14 | ×14 | 140 | +25 | 165 |
+| 15 | ×15 | 150 | +25 | 175 |
 
-**Máximo total = 1950 pontos**
+**Máximo total = 1575 pontos**
 
 ## 🔧 Tecnologias
 
-HTML, CSS e JavaScript puro — sem bibliotecas externas. Efeitos sonoros com Web Audio API. Confete animado com CSS.
+HTML, CSS e JavaScript puro — sem bibliotecas externas. Efeitos sonoros com Web Audio API. Confete animado com CSS. Design feito com auxílio de IA.
 
 ## 🚀 Como usar
 
 Abra o arquivo `index.html` em qualquer navegador moderno. Não precisa instalar nada.
+
+Jogue online: [rayforgelab.github.io/recicla-ai](https://rayforgelab.github.io/recicla-ai/)
 
 ## 📁 Estrutura
 

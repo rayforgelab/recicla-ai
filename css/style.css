@@ -200,15 +200,15 @@ body::before {
   padding: 16px 40px;
   font-size: 1.3rem;
   border-radius: 50px;
-  border: 3px solid #2D3436;
-  box-shadow: 0 5px 0 #2D3436;
+  border: 2px solid #2D3436;
+  box-shadow: 0 3px 0 #2D3436;
   transition: all 0.1s ease;
   color: white;
   letter-spacing: 0.5px;
 }
 
 .btn:active {
-  transform: translateY(4px);
+  transform: translateY(2px);
   box-shadow: 0 1px 0 #2D3436;
 }
 
@@ -369,7 +369,7 @@ body::before {
   justify-content: center;
   gap: 4px;
   padding: 44px 6px 12px;
-  border: 3px solid #2D3436;
+  border: 2px solid #2D3436;
   border-radius: 16px;
   font-weight: 800;
   font-size: 0.85rem;
@@ -377,7 +377,7 @@ body::before {
   transition: all 0.15s ease;
   position: relative;
   min-height: 110px;
-  box-shadow: 0 5px 0 #2D3436, inset 0 -7px 0 rgba(0,0,0,0.12);
+  box-shadow: 0 3px 0 #2D3436, inset 0 -7px 0 rgba(0,0,0,0.12);
   text-shadow: 1px 1px 1px rgba(0,0,0,0.25);
   z-index: 1;
 }
@@ -398,13 +398,13 @@ body::before {
 }
 
 .btn-lixeira:active {
-  transform: translateY(3px);
+  transform: translateY(2px);
   box-shadow: 0 1px 0 #2D3436, inset 0 -7px 0 rgba(0,0,0,0.12);
 }
 
 .btn-lixeira:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 0 #2D3436, inset 0 -7px 0 rgba(0,0,0,0.12);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 0 #2D3436, inset 0 -7px 0 rgba(0,0,0,0.12);
 }
 
 .btn-lixeira:disabled {
@@ -605,13 +605,13 @@ body::before {
   padding: 14px 40px;
   font-size: 1.2rem;
   border-radius: 50px;
-  border: 3px solid #2D3436;
-  box-shadow: 0 4px 0 #2D3436;
+  border: 2px solid #2D3436;
+  box-shadow: 0 3px 0 #2D3436;
   margin-top: 12px;
 }
 
 .btn-next:active {
-  transform: translateY(3px);
+  transform: translateY(2px);
   box-shadow: 0 1px 0 #2D3436;
 }
 
@@ -844,6 +844,78 @@ body::before {
   font-size: 0.78rem;
   color: var(--color-text-light);
   line-height: 1.4;
+}
+
+/* ============== RANKING ============== */
+#tela-ranking {
+  gap: 15px;
+  padding: 30px 20px;
+  justify-content: flex-start;
+}
+
+.ranking-loading {
+  font-size: 1rem;
+  color: var(--color-text-light);
+  text-align: center;
+  padding: 20px;
+}
+
+.ranking-lista {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ranking-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--color-card);
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+  border: 2px solid rgba(0,0,0,0.06);
+  transition: transform 0.15s ease;
+}
+
+.ranking-item:first-child {
+  border-color: #FFD93D;
+  background: #FFFDF0;
+}
+
+.ranking-item:nth-child(2) {
+  border-color: #E0E0E0;
+}
+
+.ranking-item:nth-child(3) {
+  border-color: #CD7F32;
+}
+
+.ranking-pos {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.2rem;
+  color: var(--color-text-light);
+  min-width: 36px;
+  text-align: center;
+}
+
+.ranking-item:first-child .ranking-pos {
+  color: #FFD93D;
+  font-size: 1.4rem;
+}
+
+.ranking-nome {
+  flex: 1;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.ranking-score {
+  font-weight: 800;
+  color: var(--color-orange);
+  font-size: 1rem;
 }
 
 /* ============== CONFETTI ============== */
