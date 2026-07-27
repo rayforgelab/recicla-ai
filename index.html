@@ -26,13 +26,18 @@
       <button id="btn-play" class="btn btn-play">🎮 Jogar</button>
       <button id="btn-learn" class="btn btn-learn">📖 Aprender</button>
     </div>
-    <button id="btn-ranking" class="btn-info-inicio" title="Ver ranking">🏆 Ranking</button>
-    <button id="btn-info-pontos" class="btn-info-inicio" title="Como funciona a pontuação">⭐ Como ganhar pontos</button>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:4px;">
+      <button id="btn-ranking" class="btn-info-inicio" title="Ver ranking global">🏆 Ranking Global</button>
+      <button id="btn-ranking-local" class="btn-info-inicio" title="Ver ranking local">📊 Ranking Local</button>
+      <button id="btn-info-pontos" class="btn-info-inicio" title="Como funciona a pontuação">⭐ Como ganhar pontos</button>
+      <button id="btn-musica" class="btn-info-inicio" title="Música ambiente">🔇</button>
+    </div>
   </div>
 
   <!-- ============== GAME SCREEN ============== -->
   <div id="tela-jogo" class="screen">
     <div class="game-header">
+      <button id="btn-game-home" class="btn-game-home" title="Voltar ao início">←</button>
       <div class="game-score">
         <span class="game-score-icon">⭐</span>
         <span>Pontos: <strong id="pontuacao-num">0</strong></span>
@@ -42,6 +47,7 @@
         <span class="game-counter-icon">📋</span>
         <span id="p-contador">1 de 10</span>
       </div>
+      <button id="btn-musica-jogo" class="btn-music" title="Música ambiente">🔇</button>
     </div>
 
     <div id="timer-wrapper" class="timer-wrapper">
@@ -341,10 +347,22 @@
     <button id="btn-ranking-voltar" class="btn btn-learn btn-small learn-back">🏠 Voltar ao início</button>
   </div>
 
+  <!-- ============== LOCAL RANKING SCREEN ============== -->
+  <div id="tela-ranking-local" class="screen">
+    <div class="learn-header">
+      <h2 class="learn-title">📊 Ranking Local</h2>
+      <p class="learn-subtitle">Melhores pontuações desse dispositivo!</p>
+    </div>
+    <div id="local-erro" class="ranking-loading" style="display:none;color:#E74C3C;"></div>
+    <div id="local-lista" class="ranking-lista"></div>
+    <button id="btn-local-voltar" class="btn btn-learn btn-small learn-back">🏠 Voltar ao início</button>
+  </div>
+
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
   <script src="js/firebase-config.js"></script>
   <script src="js/questions.js"></script>
+  <script src="js/audio.js"></script>
   <script src="js/game.js"></script>
   <script src="js/ranking.js"></script>
 

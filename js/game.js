@@ -257,6 +257,7 @@ const game = {
       document.getElementById('modal-nome').classList.add('show');
     } else {
       ranking.salvar(this.score, this.acertos, this.questions.length);
+      ranking.salvarLocal(this.score, this.acertos, this.questions.length);
     }
 
     const pct = this.acertos / this.questions.length;
@@ -398,6 +399,10 @@ document.addEventListener('DOMContentLoaded', () => {
     game.tocarSom('click');
     game.voltarInicio();
   });
+  document.getElementById('btn-game-home').addEventListener('click', () => {
+    game.tocarSom('click');
+    game.voltarInicio();
+  });
   document.getElementById('btn-home2').addEventListener('click', () => {
     game.tocarSom('click');
     game.voltarInicio();
@@ -436,6 +441,12 @@ document.addEventListener('DOMContentLoaded', () => {
     ranking.exibirNaTela();
   });
 
+  document.getElementById('btn-ranking-local').addEventListener('click', () => {
+    game.tocarSom('click');
+    game.mostrarTela('tela-ranking-local');
+    ranking.exibirLocalNaTela();
+  });
+
   document.getElementById('btn-ranking-finish').addEventListener('click', () => {
     game.tocarSom('click');
     game.mostrarTela('tela-ranking');
@@ -443,6 +454,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.getElementById('btn-ranking-voltar').addEventListener('click', () => {
+    game.tocarSom('click');
+    game.voltarInicio();
+  });
+
+  document.getElementById('btn-local-voltar').addEventListener('click', () => {
     game.tocarSom('click');
     game.voltarInicio();
   });
@@ -459,11 +475,35 @@ document.addEventListener('DOMContentLoaded', () => {
     ranking.salvarNome(nome);
     document.getElementById('modal-nome').classList.remove('show');
     ranking.salvar(game.score, game.acertos, game.questions.length);
+    ranking.salvarLocal(game.score, game.acertos, game.questions.length);
   });
 
   document.getElementById('input-nome').addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
       document.getElementById('btn-salvar-nome').click();
     }
+  });
+
+  function atualizarBotoesMusica() {
+    const playing = AudioManager.isPlaying();
+    document.querySelectorAll('#btn-musica, #btn-musica-jogo').forEach(btn => {
+      btn.textContent = playing ? '🔊' : '🔇';
+      btn.title = playing ? 'Desativar música ambiente' : 'Ativar música ambiente';
+      if (btn.id === 'btn-musica-jogo') {
+        btn.classList.toggle('active', playing);
+      }
+    });
+  }
+
+  document.getElementById('btn-musica').addEventListener('click', () => {
+    AudioManager.toggle();
+    atualizarBotoesMusica();
+    if (AudioManager.isPlaying()) game.tocarSom('start');
+  });
+
+  document.getElementById('btn-musica-jogo').addEventListener('click', () => {
+    AudioManager.toggle();
+    atualizarBotoesMusica();
+    if (AudioManager.isPlaying()) game.tocarSom('start');
   });
 });

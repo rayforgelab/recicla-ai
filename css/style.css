@@ -254,6 +254,60 @@ body::before {
   flex-shrink: 0;
 }
 
+.btn-game-home {
+  background: var(--color-bg);
+  border: 2px solid #2D3436;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2D3436;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+}
+
+.btn-game-home:hover {
+  background: #E8E8E8;
+}
+
+.btn-game-home:active {
+  transform: scale(0.9);
+}
+
+.btn-music {
+  background: var(--color-bg);
+  border: 2px solid #2D3436;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2D3436;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+}
+
+.btn-music:hover {
+  background: #E8E8E8;
+}
+
+.btn-music:active {
+  transform: scale(0.9);
+}
+
+.btn-music.active {
+  background: #E8F5E9;
+  border-color: var(--color-green);
+}
+
 .game-score, .game-counter {
   display: flex;
   align-items: center;
@@ -280,20 +334,25 @@ body::before {
 
 
 .btn-info-inicio {
-  margin-top: 6px;
-  background: transparent;
-  border: none;
-  font-size: 0.8rem;
+  background: var(--color-card);
+  border: 2px solid #2D3436;
+  font-size: 0.85rem;
   font-weight: 700;
-  cursor: pointer;
-  color: var(--color-text-light);
-  transition: color 0.2s;
-  text-decoration: underline dotted;
-  text-underline-offset: 3px;
+  color: var(--color-text);
+  padding: 10px 18px;
+  border-radius: 50px;
+  box-shadow: 0 3px 0 #2D3436;
+  transition: all 0.1s ease;
+  letter-spacing: 0.3px;
 }
 
 .btn-info-inicio:hover {
-  color: #3498DB;
+  background: #F0F0F0;
+}
+
+.btn-info-inicio:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #2D3436;
 }
 
 .question-card {
@@ -880,16 +939,16 @@ body::before {
   transition: transform 0.15s ease;
 }
 
-.ranking-item:first-child {
+.ranking-top1 {
   border-color: #FFD93D;
   background: #FFFDF0;
 }
 
-.ranking-item:nth-child(2) {
+.ranking-top2 {
   border-color: #E0E0E0;
 }
 
-.ranking-item:nth-child(3) {
+.ranking-top3 {
   border-color: #CD7F32;
 }
 
@@ -916,6 +975,17 @@ body::before {
   font-weight: 800;
   color: var(--color-orange);
   font-size: 1rem;
+}
+
+/* ============== SPINNER ============== */
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 4px solid #E0E0E0;
+  border-top-color: var(--color-green);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  margin: 20px auto;
 }
 
 /* ============== CONFETTI ============== */
