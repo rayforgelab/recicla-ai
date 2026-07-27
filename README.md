@@ -1,6 +1,6 @@
 # Recicla Aí ♻️
 
-Jogo educativo para crianças de 6 a 12 anos ensinar a separar o lixo de forma correta, seguindo o padrão de cores da reciclagem (ABNT).
+Jogo educativo que ensina crianças de 6 a 12 anos a separar o lixo de forma correta, seguindo o padrão de cores da reciclagem (ABNT).
 
 ## 🎯 Objetivo
 
