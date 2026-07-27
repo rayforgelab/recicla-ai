@@ -255,30 +255,29 @@ body::before {
 }
 
 .btn-game-home {
-  background: var(--color-orange);
+  background: var(--color-bg);
   border: 2px solid #2D3436;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  font-size: 1.3rem;
+  width: 36px;
+  height: 36px;
+  font-size: 1.2rem;
   font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #2D3436;
   cursor: pointer;
   flex-shrink: 0;
-  box-shadow: 0 3px 0 #2D3436;
-  transition: all 0.1s ease;
+  transition: all 0.15s ease;
+  line-height: 1;
 }
 
 .btn-game-home:hover {
-  background: var(--color-orange-dark);
+  background: #E8E8E8;
 }
 
 .btn-game-home:active {
-  transform: translateY(2px);
-  box-shadow: 0 1px 0 #2D3436;
+  transform: scale(0.9);
 }
 
 .btn-music {
