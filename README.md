@@ -15,7 +15,8 @@ Cada pergunta mostra a foto de um item reciclável. A criança deve clicar na li
 - **Feedback** — Explicação e dica após cada resposta
 - **Final** — Pontuação com mensagem personalizada + confete. Botão do Ranking
 - **Aprender** — Guia com as 6 cores principais + 4 complementares + curiosidades
-- **Ranking** — Top 20 pontuações salvas no Firebase
+- **Ranking Global** — Top 20 pontuações salvas no Firebase
+- **Ranking Local** — Top 20 pontuações salvas no navegador
 
 ## 🗑️ Lixeiras
 
@@ -72,7 +73,7 @@ As pontuações são salvas automaticamente no **Firebase Realtime Database** (n
 
 ## 🔧 Tecnologias
 
-HTML, CSS e JavaScript puro. Firebase Realtime Database (SDK v8 compat via CDN). Efeitos sonoros com Web Audio API. Confete animado com CSS. Design feito com auxílio de IA.
+HTML, CSS e JavaScript puro. Firebase Realtime Database (SDK v8 compat via CDN). Efeitos sonoros e **música ambiente** com Web Audio API (acordes em loop com ondas triangulares + LFO). Confete animado com CSS. Design feito com auxílio de IA.
 
 ## 🚀 Como usar
 
@@ -83,13 +84,15 @@ Abra o `index.html` em qualquer navegador moderno (não precisa instalar nada), 
 ```
 recicla-ai/
 ├── index.html
+├── firebase-rules.txt
 ├── css/
 │   └── style.css
 ├── js/
 │   ├── firebase-config.js
 │   ├── questions.js
 │   ├── game.js
-│   └── ranking.js
+│   ├── ranking.js
+│   └── audio.js
 └── assets/images/items/
     └── (25 fotos em JPEG)
 ```
