@@ -53,6 +53,7 @@ const ranking = {
 
     container.innerHTML = '';
     erro.style.display = 'none';
+    document.getElementById('ranking-loading').style.display = 'none';
     this.mostrarLoading(container);
 
     this.carregar().then(lista => {
