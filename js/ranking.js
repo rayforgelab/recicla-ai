@@ -29,7 +29,7 @@ const ranking = {
     }
   },
 
-  async carregar(limite = 20) {
+  async carregar(limite = 100) {
     try {
       const snapshot = await this.db.orderByChild('score').limitToLast(limite).once('value');
       const dados = snapshot.val();
@@ -127,7 +127,7 @@ const ranking = {
       }
 
       lista.sort((a, b) => b.score - a.score);
-      lista.slice(0, 20).forEach((item, i) => {
+      lista.slice(0, 100).forEach((item, i) => {
         const div = document.createElement('div');
         div.className = 'ranking-item';
         if (i === 0) div.classList.add('ranking-top1');

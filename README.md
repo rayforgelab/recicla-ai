@@ -66,8 +66,8 @@ Acertando todas as 15 em menos de 2s: **1575 pontos**.
 
 As pontuações são salvas automaticamente no **Firebase Realtime Database** (não precisa de backend). Ao finalizar o jogo, se for a primeira vez, um modal pede um apelido (salvo no navegador). Depois disso, só a melhor pontuação de cada jogador é mantida.
 
-- **Ranking Global** (Firebase) — top 20 jogadores do mundo todo
-- **Ranking Local** (`localStorage`) — top 20 jogadores desse dispositivo
+- **Ranking Global** (Firebase) — top 100 jogadores do mundo todo
+- **Ranking Local** (`localStorage`) — top 100 jogadores desse dispositivo
 - Acessível pela tela inicial e pela tela final
 - Totalmente público — sem autenticação
 
