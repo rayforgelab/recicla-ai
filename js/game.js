@@ -365,36 +365,25 @@ const game = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  const btnPlay = document.getElementById('btn-play');
+  const overlay = document.getElementById('loading-overlay');
+  const loadingText = document.getElementById('loading-text');
   const totalImgs = questions.filter(q => q.image).length;
   let loadedImgs = 0;
-
-  const statusEl = document.createElement('p');
-  statusEl.style.cssText = 'font-size:0.85rem;color:var(--color-text-light);margin-top:4px;';
-  statusEl.textContent = `Carregando imagens (0/${totalImgs})...`;
-  btnPlay.parentNode.insertBefore(statusEl, btnPlay.nextSibling);
-
-  btnPlay.disabled = true;
-  btnPlay.style.opacity = '0.6';
-  btnPlay.style.cursor = 'not-allowed';
 
   questions.forEach(q => {
     if (!q.image) return;
     const img = new Image();
     img.onload = img.onerror = () => {
       loadedImgs++;
-      statusEl.textContent = `Carregando imagens (${loadedImgs}/${totalImgs})...`;
+      loadingText.textContent = `Carregando (${loadedImgs}/${totalImgs})...`;
       if (loadedImgs >= totalImgs) {
-        statusEl.textContent = '✅ Imagens carregadas!';
-        btnPlay.disabled = false;
-        btnPlay.style.opacity = '1';
-        btnPlay.style.cursor = 'pointer';
+        overlay.style.display = 'none';
       }
     };
     img.src = q.image;
   });
 
-  btnPlay.addEventListener('click', () => {
+  document.getElementById('btn-play').addEventListener('click', () => {
     game.tocarSom('start');
     game.iniciarJogo();
   });

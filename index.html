@@ -11,6 +11,12 @@
 
   <div id="confetti-container" class="confetti-container"></div>
 
+  <!-- Loading overlay -->
+  <div id="loading-overlay" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.55);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+    <div class="spinner" style="width:48px;height:48px;border-width:5px;"></div>
+    <p id="loading-text" style="color:white;font-family:'Fredoka One',cursive;font-size:1.3rem;margin-top:24px;">Carregando...</p>
+  </div>
+
   <!-- ============== START SCREEN ============== -->
   <div id="tela-inicial" class="screen active">
     <h1 class="logo">
