@@ -22,7 +22,7 @@ const ranking = {
       const snap = await ref.once('value');
       const existente = snap.val();
       if (!existente || score > existente.score) {
-        await ref.set({ nome, score, acertos, total, data: Date.now() });
+        await ref.set({ nome, score, acertos, total, data: firebase.database.ServerValue.TIMESTAMP });
       }
     } catch (e) {
       console.warn('Erro ao salvar ranking:', e);
