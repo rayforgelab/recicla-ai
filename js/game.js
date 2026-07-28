@@ -45,10 +45,6 @@ const game = {
     this.indiceAtual = 0;
     this.mostrarTela('tela-jogo');
     this.carregarPergunta();
-    this.preloadImagens();
-    this.questions.forEach(q => {
-      if (q.image) { const img = new Image(); img.src = q.image; }
-    });
   },
 
   mostrarTela(id) {
@@ -127,16 +123,6 @@ const game = {
 
     this.startTime = Date.now();
     this.iniciarTimer();
-    this.preloadImagens();
-  },
-
-  preloadImagens() {
-    for (let i = 1; i <= 3; i++) {
-      const idx = this.indiceAtual + i;
-      if (idx >= this.questions.length) break;
-      const img = new Image();
-      img.src = this.questions[idx].image;
-    }
   },
 
   iniciarTimer() {
@@ -379,7 +365,36 @@ const game = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('btn-play').addEventListener('click', () => {
+  const btnPlay = document.getElementById('btn-play');
+  const totalImgs = questions.filter(q => q.image).length;
+  let loadedImgs = 0;
+
+  const statusEl = document.createElement('p');
+  statusEl.style.cssText = 'font-size:0.85rem;color:var(--color-text-light);margin-top:4px;';
+  statusEl.textContent = `Carregando imagens (0/${totalImgs})...`;
+  btnPlay.parentNode.insertBefore(statusEl, btnPlay.nextSibling);
+
+  btnPlay.disabled = true;
+  btnPlay.style.opacity = '0.6';
+  btnPlay.style.cursor = 'not-allowed';
+
+  questions.forEach(q => {
+    if (!q.image) return;
+    const img = new Image();
+    img.onload = img.onerror = () => {
+      loadedImgs++;
+      statusEl.textContent = `Carregando imagens (${loadedImgs}/${totalImgs})...`;
+      if (loadedImgs >= totalImgs) {
+        statusEl.textContent = '✅ Imagens carregadas!';
+        btnPlay.disabled = false;
+        btnPlay.style.opacity = '1';
+        btnPlay.style.cursor = 'pointer';
+      }
+    };
+    img.src = q.image;
+  });
+
+  btnPlay.addEventListener('click', () => {
     game.tocarSom('start');
     game.iniciarJogo();
   });
