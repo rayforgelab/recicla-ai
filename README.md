@@ -10,8 +10,8 @@ Cada pergunta mostra a foto de um item reciclável. A criança deve clicar na li
 
 ## 🎮 Telas
 
-- **Início** — Botões para Jogar, Aprender e ver o Ranking
-- **Jogo** — Perguntas com fotos reais + 6 lixeiras para escolher. Botão ← para voltar
+- **Início** — Botões para Jogar, Aprender e ver o Ranking. Botão 🔇/🔊 para música ambiente
+- **Jogo** — Perguntas com fotos reais + 6 lixeiras para escolher. Botão Voltar para sair e 🔇/🔊 no topo
 - **Feedback** — Explicação e dica após cada resposta
 - **Final** — Pontuação com mensagem personalizada + confete. Botão do Ranking
 - **Aprender** — Guia com as 6 cores principais + 4 complementares + curiosidades
