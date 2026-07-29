@@ -5,7 +5,7 @@ const LOCALE_DATA = {
       loading: 'Carregando ({loaded}/{total})...',
       langSelector: 'Idioma',
       start: {
-        subtitle: '\u{1F9B1} Aprenda a separar o lixo e ajude o planeta!',
+        subtitle: '\u267B\uFE0F Aprenda a separar o lixo e ajude o planeta!',
         play: '\u{1F3AE} Jogar',
         learn: '\u{1F4D6} Aprender',
         rankingGlobal: '\u{1F3C6} Ranking Global',
@@ -193,7 +193,7 @@ const LOCALE_DATA = {
       loading: 'Loading ({loaded}/{total})...',
       langSelector: 'Language',
       start: {
-        subtitle: '\u{1F9B1} Learn to sort waste and help the planet!',
+        subtitle: '\u267B\uFE0F Learn to sort waste and help the planet!',
         play: '\u{1F3AE} Play',
         learn: '\u{1F4D6} Learn',
         rankingGlobal: '\u{1F3C6} Global Ranking',
@@ -381,7 +381,7 @@ const LOCALE_DATA = {
       loading: 'Cargando ({loaded}/{total})...',
       langSelector: 'Idioma',
       start: {
-        subtitle: '\u{1F9B1} \u00a1Aprende a separar la basura y ayuda al planeta!',
+        subtitle: '\u267B\uFE0F \u00a1Aprende a separar la basura y ayuda al planeta!',
         play: '\u{1F3AE} Jugar',
         learn: '\u{1F4D6} Aprender',
         rankingGlobal: '\u{1F3C6} Ranking Global',
