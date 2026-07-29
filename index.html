@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recicla Aí - Jogo da Reciclagem</title>
+  <title data-i18n="ui.siteTitle">Recicla Aí - Jogo da Reciclagem</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♻️</text></svg>">
 </head>
@@ -24,29 +24,35 @@
       <span>A</span><span>í</span>
     </h1>
 
-    <p class="start-subtitle">
+    <p class="start-subtitle" data-i18n="ui.start.subtitle">
       ♻️ Aprenda a separar o lixo e ajude o planeta!
     </p>
 
     <div class="start-buttons">
-      <button id="btn-play" class="btn btn-play">🎮 Jogar</button>
-      <button id="btn-learn" class="btn btn-learn">📖 Aprender</button>
+      <button id="btn-play" class="btn btn-play" data-i18n="ui.start.play">🎮 Jogar</button>
+      <button id="btn-learn" class="btn btn-learn" data-i18n="ui.start.learn">📖 Aprender</button>
     </div>
     <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:4px;">
-      <button id="btn-ranking" class="btn-info-inicio" title="Ver ranking global">🏆 Ranking Global</button>
-      <button id="btn-ranking-local" class="btn-info-inicio" title="Ver ranking local">📊 Ranking Local</button>
-      <button id="btn-info-pontos" class="btn-info-inicio" title="Como funciona a pontuação">⭐ Como ganhar pontos</button>
+      <button id="btn-ranking" class="btn-info-inicio" data-i18n="ui.start.rankingGlobal" title="Ver ranking global">🏆 Ranking Global</button>
+      <button id="btn-ranking-local" class="btn-info-inicio" data-i18n="ui.start.rankingLocal" title="Ver ranking local">📊 Ranking Local</button>
+      <button id="btn-info-pontos" class="btn-info-inicio" data-i18n="ui.start.howToScore" title="Como funciona a pontuação">⭐ Como ganhar pontos</button>
       <button id="btn-musica" class="btn-info-inicio" title="Música ambiente">🔇</button>
     </div>
+  </div>
+
+  <div class="lang-selector">
+    <button data-lang="pt-BR" class="lang-btn" title="Português">🇧🇷</button>
+    <button data-lang="en" class="lang-btn" title="English">🇺🇸</button>
+    <button data-lang="es" class="lang-btn" title="Español">🇪🇸</button>
   </div>
 
   <!-- ============== GAME SCREEN ============== -->
   <div id="tela-jogo" class="screen">
     <div class="game-header">
-      <button id="btn-game-home" class="btn-game-home" title="Voltar ao início">Voltar</button>
+      <button id="btn-game-home" class="btn-game-home" data-i18n="ui.game.back" data-i18n-title="ui.game.backTitle">Voltar</button>
       <div class="game-score">
         <span class="game-score-icon">⭐</span>
-        <span>Pontos: <strong id="pontuacao-num">0</strong></span>
+        <span><span data-i18n="ui.game.points">Pontos</span>: <strong id="pontuacao-num">0</strong></span>
         <span id="indicador-streak" class="indicador-streak" style="display:none;"></span>
       </div>
       <div class="game-counter">
@@ -63,7 +69,7 @@
     <div class="question-card">
       <span id="p-emoji" class="question-emoji">🧴</span>
       <div id="p-item" class="question-item">GARRAFA PET</div>
-      <p class="question-text">Em qual lixeira esse item deve ser colocado?</p>
+      <p class="question-text" data-i18n="ui.game.question">Em qual lixeira esse item deve ser colocado?</p>
     </div>
 
     <div id="container-lixeiras" class="bins-grid">
@@ -81,20 +87,20 @@
       </p>
       <p id="feedback-bonus" class="feedback-bonus"></p>
       <p id="feedback-tip" class="feedback-tip">💡 Dica educativa aqui</p>
-      <button id="btn-next" class="btn-next">Próximo ➜</button>
+      <button id="btn-next" class="btn-next" data-i18n="ui.game.next">Próximo ➜</button>
     </div>
   </div>
 
   <!-- ============== SCORING INFO OVERLAY ============== -->
   <div id="sobreposicao-info" class="sobreposicao-info">
     <div class="info-card">
-      <h3 class="info-title">⭐ Como ganhar pontos</h3>
+      <h3 class="info-title" data-i18n="ui.info.title">⭐ Como ganhar pontos</h3>
       <ul class="info-lista">
-        <li><strong>🔥 Acertos seguidos:</strong> cada acerto seguido vale mais. 1º = 10pts, 2º = 20pts, 3º = 30pts... Se errar, sua sequência não zera, mas volta para o 1º acerto.</li>
-        <li><strong>⚡ Rapidez:</strong> responda rápido! Dá até +25 pts de bônus. Você tem 2 segundos para conseguir o bônus máximo.</li>
-        <li><strong>🚫 Errar</strong> não zera sua pontuação, só reinicia a sequência de acertos. O bônus de tempo diminui com calma.</li>
+        <li data-i18n-html="ui.info.streak"><strong>🔥 Acertos seguidos:</strong> cada acerto seguido vale mais. 1º = 10pts, 2º = 20pts, 3º = 30pts... Se errar, sua sequência não zera, mas volta para o 1º acerto.</li>
+        <li data-i18n-html="ui.info.speed"><strong>⚡ Rapidez:</strong> responda rápido! Dá até +25 pts de bônus. Você tem 2 segundos para conseguir o bônus máximo.</li>
+        <li data-i18n-html="ui.info.penalty"><strong>🚫 Errar</strong> não zera sua pontuação, só reinicia a sequência de acertos. O bônus de tempo diminui com calma.</li>
       </ul>
-      <button id="btn-fechar-info" class="btn-next">Entendi! 👍</button>
+      <button id="btn-fechar-info" class="btn-next" data-i18n="ui.info.close">Entendi! 👍</button>
     </div>
   </div>
 
@@ -102,44 +108,44 @@
   <div id="modal-nome" class="sobreposicao-feedback">
     <div class="feedback-card">
       <span class="feedback-icon" style="font-size:2.5rem;">🏆</span>
-      <h2 class="feedback-title" style="font-size:1.3rem;">Qual seu nome?</h2>
-      <p class="feedback-explanation" style="font-size:0.85rem;">
+      <h2 class="feedback-title" style="font-size:1.3rem;" data-i18n="ui.modal.title">Qual seu nome?</h2>
+      <p class="feedback-explanation" style="font-size:0.85rem;" data-i18n="ui.modal.desc">
         Para salvar sua pontuação no ranking!
       </p>
-      <input id="input-nome" type="text" maxlength="12" placeholder="Seu apelido"
+      <input id="input-nome" type="text" maxlength="12" data-i18n-placeholder="ui.modal.placeholder" placeholder="Seu apelido"
         style="width:100%;padding:12px 16px;font-size:1.1rem;border:3px solid #2D3436;border-radius:12px;text-align:center;font-weight:700;font-family:'Nunito',sans-serif;outline:none;margin:8px 0;">
-      <button id="btn-salvar-nome" class="btn-next" style="margin-top:4px;">Salvar 👍</button>
+      <button id="btn-salvar-nome" class="btn-next" style="margin-top:4px;" data-i18n="ui.modal.save">Salvar 👍</button>
     </div>
   </div>
 
   <!-- ============== FINISH SCREEN ============== -->
   <div id="tela-final" class="screen">
     <div id="finish-stars" class="finish-stars">⭐⭐⭐</div>
-    <h2 class="finish-title">Fim de jogo!</h2>
+    <h2 class="finish-title" data-i18n="ui.finish.title">Fim de jogo!</h2>
 
     <p class="finish-score">
-      <strong id="final-acertos">0</strong> de <strong id="total-questions">10</strong> acertos
+      <strong id="final-acertos">0</strong> <span data-i18n="ui.finish.of">de</span> <strong id="total-questions">10</strong> <span data-i18n="ui.finish.hits">acertos</span>
     </p>
     <p class="finish-points">
-      ⭐ <strong id="final-score">0</strong> pontos
+      ⭐ <strong id="final-score">0</strong> <span data-i18n="ui.finish.points">pontos</span>
     </p>
     <p id="finish-message" class="finish-message">
       Mensagem personalizada aqui!
     </p>
 
     <div class="finish-buttons">
-      <button id="btn-restart" class="btn btn-play btn-small">🔄 Jogar de novo</button>
-      <button id="btn-home" class="btn btn-learn btn-small">🏠 Voltar</button>
-      <button id="btn-ranking-finish" class="btn btn-small" style="background:#9B59B6;color:white;border-color:#2D3436;box-shadow:0 3px 0 #2D3436;">🏆 Ranking</button>
-      <button id="btn-learn-more" class="btn btn-small" style="background:#9B59B6;color:white;border-color:#2D3436;box-shadow:0 3px 0 #2D3436;">📖 Aprender mais</button>
+      <button id="btn-restart" class="btn btn-play btn-small" data-i18n="ui.finish.restart">🔄 Jogar de novo</button>
+      <button id="btn-home" class="btn btn-learn btn-small" data-i18n="ui.finish.back">🏠 Voltar</button>
+      <button id="btn-ranking-finish" class="btn btn-small" style="background:#9B59B6;color:white;border-color:#2D3436;box-shadow:0 3px 0 #2D3436;" data-i18n="ui.finish.ranking">🏆 Ranking</button>
+      <button id="btn-learn-more" class="btn btn-small" style="background:#9B59B6;color:white;border-color:#2D3436;box-shadow:0 3px 0 #2D3436;" data-i18n="ui.learn.learnMore">📖 Aprender mais</button>
     </div>
   </div>
 
   <!-- ============== LEARN SCREEN ============== -->
   <div id="tela-aprender" class="screen">
     <div class="learn-header">
-      <h2 class="learn-title">Aprenda sobre Reciclagem ♻️</h2>
-      <p class="learn-subtitle">
+      <h2 class="learn-title" data-i18n="learn.title">Aprenda sobre Reciclagem ♻️</h2>
+      <p class="learn-subtitle" data-i18n="learn.subtitle">
         Cada lixeira tem uma cor. Veja o que vai em cada uma!
       </p>
     </div>
@@ -151,16 +157,16 @@
           <div class="learn-card-icon" style="background:#3498DB;">
             <span>📄</span>
           </div>
-          <h3 class="learn-card-title" style="color:#3498DB;">Lixeira Azul</h3>
+          <h3 class="learn-card-title" style="color:#3498DB;" data-i18n="learn.bins.azul.title">Lixeira Azul</h3>
         </div>
-        <p class="learn-card-desc">
+        <p class="learn-card-desc" data-i18n-html="learn.bins.azul.desc">
             <strong>Papéis e papelões</strong>: jornais, revistas, cadernos, caixas e folhas.
         </p>
         <div class="learn-card-examples">
-          <span class="learn-example-tag">📰 Jornal</span>
-          <span class="learn-example-tag">📦 Papelão</span>
-          <span class="learn-example-tag">📓 Caderno</span>
-          <span class="learn-example-tag">📄 Sulfite</span>
+          <span class="learn-example-tag" data-i18n="learn.bins.azul.examples.0">📰 Jornal</span>
+          <span class="learn-example-tag" data-i18n="learn.bins.azul.examples.1">📦 Papelão</span>
+          <span class="learn-example-tag" data-i18n="learn.bins.azul.examples.2">📓 Caderno</span>
+          <span class="learn-example-tag" data-i18n="learn.bins.azul.examples.3">📄 Sulfite</span>
         </div>
       </div>
 
@@ -169,16 +175,16 @@
           <div class="learn-card-icon" style="background:#E74C3C;">
             <span>🥤</span>
           </div>
-          <h3 class="learn-card-title" style="color:#E74C3C;">Lixeira Vermelha</h3>
+          <h3 class="learn-card-title" style="color:#E74C3C;" data-i18n="learn.bins.vermelha.title">Lixeira Vermelha</h3>
         </div>
-        <p class="learn-card-desc">
+        <p class="learn-card-desc" data-i18n-html="learn.bins.vermelha.desc">
             <strong>Plásticos</strong>: garrafas PET, sacolas, potes, canudos e copos.
         </p>
         <div class="learn-card-examples">
-          <span class="learn-example-tag">🧴 Garrafa PET</span>
-          <span class="learn-example-tag">🛍️ Sacola</span>
-          <span class="learn-example-tag">🥤 Canudo</span>
-          <span class="learn-example-tag">🧸 Brinquedo</span>
+          <span class="learn-example-tag" data-i18n="learn.bins.vermelha.examples.0">🧴 Garrafa PET</span>
+          <span class="learn-example-tag" data-i18n="learn.bins.vermelha.examples.1">🛍️ Sacola</span>
+          <span class="learn-example-tag" data-i18n="learn.bins.vermelha.examples.2">🥤 Canudo</span>
+          <span class="learn-example-tag" data-i18n="learn.bins.vermelha.examples.3">🧸 Brinquedo</span>
         </div>
       </div>
 
@@ -187,16 +193,16 @@
           <div class="learn-card-icon" style="background:#F1C40F;color:#2D3436;">
             <span>🔩</span>
           </div>
-          <h3 class="learn-card-title" style="color:#F1C40F;text-shadow:0 1px 0 rgba(0,0,0,0.3);">Lixeira Amarela</h3>
+          <h3 class="learn-card-title" style="color:#F1C40F;text-shadow:0 1px 0 rgba(0,0,0,0.3);" data-i18n="learn.bins.amarela.title">Lixeira Amarela</h3>
         </div>
-        <p class="learn-card-desc">
+        <p class="learn-card-desc" data-i18n-html="learn.bins.amarela.desc">
             <strong>Metais</strong>: latinhas, tampas, clips, panelas e arames.
         </p>
         <div class="learn-card-examples">
-          <span class="learn-example-tag">🥫 Latinha</span>
-          <span class="learn-example-tag">🍾 Tampa</span>
-          <span class="learn-example-tag">📎 Clips</span>
-          <span class="learn-example-tag">🍳 Panela</span>
+          <span class="learn-example-tag" data-i18n="learn.bins.amarela.examples.0">🥫 Latinha</span>
+          <span class="learn-example-tag" data-i18n="learn.bins.amarela.examples.1">🍾 Tampa</span>
+          <span class="learn-example-tag" data-i18n="learn.bins.amarela.examples.2">📎 Clips</span>
+          <span class="learn-example-tag" data-i18n="learn.bins.amarela.examples.3">🍳 Panela</span>
         </div>
       </div>
 
@@ -205,16 +211,16 @@
           <div class="learn-card-icon" style="background:#2ECC71;">
             <span>🫙</span>
           </div>
-          <h3 class="learn-card-title" style="color:#2ECC71;">Lixeira Verde</h3>
+          <h3 class="learn-card-title" style="color:#2ECC71;" data-i18n="learn.bins.verde.title">Lixeira Verde</h3>
         </div>
-        <p class="learn-card-desc">
+        <p class="learn-card-desc" data-i18n-html="learn.bins.verde.desc">
             <strong>Vidros</strong>: garrafas, potes, copos e frascos.
         </p>
         <div class="learn-card-examples">
-          <span class="learn-example-tag">🫗 Garrafa</span>
-          <span class="learn-example-tag">🫙 Pote</span>
-          <span class="learn-example-tag">🥂 Copo</span>
-          <span class="learn-example-tag">🧪 Frasco</span>
+          <span class="learn-example-tag" data-i18n="learn.bins.verde.examples.0">🫗 Garrafa</span>
+          <span class="learn-example-tag" data-i18n="learn.bins.verde.examples.1">🫙 Pote</span>
+          <span class="learn-example-tag" data-i18n="learn.bins.verde.examples.2">🥂 Copo</span>
+          <span class="learn-example-tag" data-i18n="learn.bins.verde.examples.3">🧪 Frasco</span>
         </div>
       </div>
 
@@ -223,16 +229,16 @@
           <div class="learn-card-icon" style="background:#8B5E3C;">
             <span>🌿</span>
           </div>
-          <h3 class="learn-card-title" style="color:#8B5E3C;">Lixeira Marrom</h3>
+          <h3 class="learn-card-title" style="color:#8B5E3C;" data-i18n="learn.bins.marrom.title">Lixeira Marrom</h3>
         </div>
-        <p class="learn-card-desc">
+        <p class="learn-card-desc" data-i18n-html="learn.bins.marrom.desc">
             <strong>Orgânicos</strong>: restos de comida, cascas, folhas e borra de café.
         </p>
         <div class="learn-card-examples">
-          <span class="learn-example-tag">🍌 Casca de fruta</span>
-          <span class="learn-example-tag">🥗 Restos</span>
-          <span class="learn-example-tag">🍂 Folhas</span>
-          <span class="learn-example-tag">🥚 Casca de ovo</span>
+          <span class="learn-example-tag" data-i18n="learn.bins.marrom.examples.0">🍌 Casca de fruta</span>
+          <span class="learn-example-tag" data-i18n="learn.bins.marrom.examples.1">🥗 Restos</span>
+          <span class="learn-example-tag" data-i18n="learn.bins.marrom.examples.2">🍂 Folhas</span>
+          <span class="learn-example-tag" data-i18n="learn.bins.marrom.examples.3">🥚 Casca de ovo</span>
         </div>
       </div>
 
@@ -241,23 +247,23 @@
           <div class="learn-card-icon" style="background:#7F8C8D;">
             <span>🗑️</span>
           </div>
-          <h3 class="learn-card-title" style="color:#7F8C8D;">Lixeira Cinza</h3>
+          <h3 class="learn-card-title" style="color:#7F8C8D;" data-i18n="learn.bins.cinza.title">Lixeira Cinza</h3>
         </div>
-        <p class="learn-card-desc">
+        <p class="learn-card-desc" data-i18n-html="learn.bins.cinza.desc">
             <strong>Rejeitos não recicláveis</strong>: fraldas, esponjas e papel higiênico.
         </p>
         <div class="learn-card-examples">
-          <span class="learn-example-tag">👶 Fralda</span>
-          <span class="learn-example-tag">🧽 Esponja</span>
-          <span class="learn-example-tag">🧻 Papel higiênico</span>
+          <span class="learn-example-tag" data-i18n="learn.bins.cinza.examples.0">👶 Fralda</span>
+          <span class="learn-example-tag" data-i18n="learn.bins.cinza.examples.1">🧽 Esponja</span>
+          <span class="learn-example-tag" data-i18n="learn.bins.cinza.examples.2">🧻 Papel higiênico</span>
         </div>
       </div>
 
     </div>
 
     <div style="text-align:center;margin:30px 0 10px;color:var(--color-text-light);font-size:0.9rem;border-top:2px dashed #E0E0E0;padding-top:25px;">
-      <strong style="color:var(--color-text);font-size:1rem;">🔹 Outras lixeiras</strong><br>
-      <span style="font-size:0.85rem;">Estas também fazem parte do padrão de cores da reciclagem.</span>
+      <strong style="color:var(--color-text);font-size:1rem;" data-i18n="learn.secondaryHeader">🔹 Outras lixeiras</strong><br>
+      <span style="font-size:0.85rem;" data-i18n="learn.secondaryDesc">Estas também fazem parte do padrão de cores da reciclagem.</span>
     </div>
 
     <div class="learn-grid-secundario">
@@ -266,113 +272,116 @@
         <div class="learn-card-header-secundario" style="background:#2D3436;">
           <span style="font-size:1.1rem;">🪵</span>
         </div>
-        <h4 class="learn-card-title-secundario" style="color:#2D3436;">Preta — Madeira</h4>
-        <p class="learn-card-desc-secundario">Madeira: móveis, tábuas, galhos e serragem.</p>
+        <h4 class="learn-card-title-secundario" style="color:#2D3436;" data-i18n="learn.secondary.preta.title">Preta — Madeira</h4>
+        <p class="learn-card-desc-secundario" data-i18n="learn.secondary.preta.desc">Madeira: móveis, tábuas, galhos e serragem.</p>
       </div>
 
       <div class="learn-card-secundario">
         <div class="learn-card-header-secundario" style="background:#E67E22;">
           <span style="font-size:1.1rem;">⚠️</span>
         </div>
-        <h4 class="learn-card-title-secundario" style="color:#E67E22;">Laranja — Perigosos</h4>
-        <p class="learn-card-desc-secundario">Pilhas, baterias, tintas, óleo e lâmpadas.</p>
+        <h4 class="learn-card-title-secundario" style="color:#E67E22;" data-i18n="learn.secondary.laranja.title">Laranja — Perigosos</h4>
+        <p class="learn-card-desc-secundario" data-i18n="learn.secondary.laranja.desc">Pilhas, baterias, tintas, óleo e lâmpadas.</p>
       </div>
 
       <div class="learn-card-secundario">
         <div class="learn-card-header-secundario" style="background:#F5F5F5;border:2px solid #DDD;">
           <span style="font-size:1.1rem;">🏥</span>
         </div>
-        <h4 class="learn-card-title-secundario" style="color:#666;">Branca — Saúde</h4>
-        <p class="learn-card-desc-secundario">Seringas, luvas e gazes.</p>
+        <h4 class="learn-card-title-secundario" style="color:#666;" data-i18n="learn.secondary.branca.title">Branca — Saúde</h4>
+        <p class="learn-card-desc-secundario" data-i18n="learn.secondary.branca.desc">Seringas, luvas e gazes.</p>
       </div>
 
       <div class="learn-card-secundario">
         <div class="learn-card-header-secundario" style="background:#9B59B6;">
           <span style="font-size:1.1rem;">☢️</span>
         </div>
-        <h4 class="learn-card-title-secundario" style="color:#9B59B6;">Roxa — Radioativos</h4>
-        <p class="learn-card-desc-secundario">De hospitais e laboratórios.</p>
+        <h4 class="learn-card-title-secundario" style="color:#9B59B6;" data-i18n="learn.secondary.roxa.title">Roxa — Radioativos</h4>
+        <p class="learn-card-desc-secundario" data-i18n="learn.secondary.roxa.desc">De hospitais e laboratórios.</p>
       </div>
 
     </div>
 
     <div class="learn-curiosities">
-      <h3>💡 Curiosidades sobre Reciclagem</h3>
+      <h3 data-i18n="learn.curiositiesHeader">💡 Curiosidades sobre Reciclagem</h3>
       <div class="curiosity-grid">
         <div class="curiosity-item">
           <span class="curiosity-icon">🌳</span>
-          <p class="curiosity-text">
+          <p class="curiosity-text" data-i18n="learn.curiosities.0">
             Reciclar papel salva 20 árvores!
           </p>
         </div>
         <div class="curiosity-item">
           <span class="curiosity-icon">♻️</span>
-          <p class="curiosity-text">
+          <p class="curiosity-text" data-i18n="learn.curiosities.1">
             O alumínio pode ser reciclado infinitamente!
           </p>
         </div>
         <div class="curiosity-item">
           <span class="curiosity-icon">⏳</span>
-          <p class="curiosity-text">
+          <p class="curiosity-text" data-i18n="learn.curiosities.2">
             Saco plástico demora 400 anos para sumir!
           </p>
         </div>
         <div class="curiosity-item">
           <span class="curiosity-icon">🗑️</span>
-          <p class="curiosity-text">
+          <p class="curiosity-text" data-i18n="learn.curiosities.3">
             Muito plástico vai parar no mar!
           </p>
         </div>
         <div class="curiosity-item">
           <span class="curiosity-icon">💰</span>
-          <p class="curiosity-text">
+          <p class="curiosity-text" data-i18n="learn.curiosities.4">
             Reciclar alumínio gasta pouca energia!
           </p>
         </div>
         <div class="curiosity-item">
           <span class="curiosity-icon">🌱</span>
-          <p class="curiosity-text">
+          <p class="curiosity-text" data-i18n="learn.curiosities.5">
             Restos de comida viram adubo para plantas!
           </p>
         </div>
       </div>
     </div>
 
-    <button id="btn-home2" class="btn btn-learn btn-small learn-back">🏠 Voltar ao início</button>
+    <button id="btn-home2" class="btn btn-learn btn-small learn-back" data-i18n="ui.learn.backHome">🏠 Voltar ao início</button>
   </div>
 
   <!-- ============== RANKING SCREEN ============== -->
   <div id="tela-ranking" class="screen">
     <div class="learn-header">
-      <h2 class="learn-title">🏆 Ranking</h2>
-      <p class="learn-subtitle">Melhores pontuações dos jogadores!</p>
+      <h2 class="learn-title" data-i18n="ui.rankingTitle">🏆 Ranking</h2>
+      <p class="learn-subtitle" data-i18n="ui.rankingSubtitle">Melhores pontuações dos jogadores!</p>
     </div>
     <div id="ranking-erro" class="ranking-loading" style="display:none;color:#E74C3C;"></div>
     <div id="ranking-lista" class="ranking-lista"></div>
-    <button id="btn-ranking-voltar" class="btn btn-learn btn-small learn-back">🏠 Voltar ao início</button>
+    <button id="btn-ranking-voltar" class="btn btn-learn btn-small learn-back" data-i18n="ui.learn.backHome">🏠 Voltar ao início</button>
   </div>
 
   <!-- ============== LOCAL RANKING SCREEN ============== -->
   <div id="tela-ranking-local" class="screen">
     <div class="learn-header">
-      <h2 class="learn-title">📊 Ranking Local</h2>
-      <p class="learn-subtitle">Melhores pontuações desse dispositivo!</p>
+      <h2 class="learn-title" data-i18n="ui.localRankingTitle">📊 Ranking Local</h2>
+      <p class="learn-subtitle" data-i18n="ui.localRankingSubtitle">Melhores pontuações desse dispositivo!</p>
     </div>
     <div id="local-erro" class="ranking-loading" style="display:none;color:#E74C3C;"></div>
     <div id="local-lista" class="ranking-lista"></div>
-    <button id="btn-local-voltar" class="btn btn-learn btn-small learn-back">🏠 Voltar ao início</button>
+    <button id="btn-local-voltar" class="btn btn-learn btn-small learn-back" data-i18n="ui.learn.backHome">🏠 Voltar ao início</button>
   </div>
 
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
   <script src="js/firebase-config.js"></script>
   <script src="js/questions.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/audio.js"></script>
   <script src="js/game.js"></script>
   <script src="js/ranking.js"></script>
 
   <footer class="site-footer">
     <a href="https://github.com/rayforgelab/recicla-ai" target="_blank" rel="noopener">
+      <svg viewBox="0 0 16 16" height="14" width="14" fill="currentColor" style="vertical-align:-2px;margin-right:4px;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+      <span data-i18n="ui.footer">rayforgelab/recicla-ai</span>
       <svg viewBox="0 0 16 16" height="14" width="14" fill="currentColor" style="vertical-align:-2px;margin-right:4px;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
       rayforgelab/recicla-ai
     </a>

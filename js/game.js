@@ -9,31 +9,31 @@ const game = {
   timerInterval: null,
   somAtivado: true,
   ctxAudio: null,
-  nomesCategorias: {
-    plastico: 'Plástico',
-    papel: 'Papel',
-    metal: 'Metal',
-    vidro: 'Vidro',
-    organico: 'Orgânico',
-    rejeito: 'Rejeitos'
-  },
-  coresCategorias: {
-    plastico: 'vermelha',
-    papel: 'azul',
-    metal: 'amarela',
-    vidro: 'verde',
-    organico: 'marrom',
-    rejeito: 'cinza'
-  },
   lixeiras: [
-    { id: 'papel', label: 'Papel', icon: '📄', color: 'lixeira-azul', className: 'azul', nomeCor: 'Azul' },
-    { id: 'plastico', label: 'Plástico', icon: '🥤', color: 'lixeira-vermelha', className: 'vermelho', nomeCor: 'Vermelha' },
-    { id: 'metal', label: 'Metal', icon: '🔩', color: 'lixeira-amarela', className: 'amarelo', nomeCor: 'Amarela' },
-    { id: 'vidro', label: 'Vidro', icon: '🫙', color: 'lixeira-verde', className: 'verde', nomeCor: 'Verde' },
-    { id: 'organico', label: 'Orgânico', icon: '🌿', color: 'lixeira-marrom', className: 'marrom', nomeCor: 'Marrom' },
-    { id: 'rejeito', label: 'Rejeitos', icon: '🗑️', color: 'lixeira-cinza', className: 'cinza', nomeCor: 'Cinza' }
+    { id: 'papel', icon: '\u{1F4C4}', color: 'lixeira-azul', corKey: 'azul' },
+    { id: 'plastico', icon: '\u{1F964}', color: 'lixeira-vermelha', corKey: 'vermelha' },
+    { id: 'metal', icon: '\u{1F529}', color: 'lixeira-amarela', corKey: 'amarela' },
+    { id: 'vidro', icon: '\u{1FAD9}', color: 'lixeira-verde', corKey: 'verde' },
+    { id: 'organico', icon: '\u{1F33F}', color: 'lixeira-marrom', corKey: 'marrom' },
+    { id: 'rejeito', icon: '\u{1F5D1}\uFE0F', color: 'lixeira-cinza', corKey: 'cinza' }
   ],
   respondendo: false,
+
+  atualizarIdioma() {
+    if (this.questions.length === 0) return;
+    const q = this.questions[this.indiceAtual];
+    if (!q) return;
+    document.getElementById('p-item').textContent = I18n.t('questions.' + q.id + '.item');
+    document.getElementById('p-contador').textContent =
+      I18n.t('ui.game.counter', { current: this.indiceAtual + 1, total: this.questions.length });
+    document.querySelectorAll('.btn-lixeira .rotulo-lixeira').forEach((el, i) => {
+      el.textContent = I18n.t('binLabels.' + this.lixeiras[i].corKey);
+    });
+    const overlay = document.getElementById('sobreposicao-feedback');
+    if (overlay.classList.contains('show')) {
+      this.mostrarFeedback(this._ultimoAcerto, this._ultimaPergunta);
+    }
+  },
 
   iniciarJogo() {
     this.pararTimer();
@@ -83,12 +83,12 @@ const game = {
     } else if (q.image) {
       const img = document.createElement('img');
       img.className = 'question-img';
-      img.alt = q.item;
+      img.alt = I18n.t('questions.' + q.id + '.item');
       img.onerror = function () {
         this.remove();
         const fb = document.createElement('span');
         fb.className = 'question-emoji';
-        fb.textContent = '♻️';
+        fb.textContent = '\u267B\uFE0F';
         emojiEl.appendChild(fb);
       };
       img.src = q.image;
@@ -96,9 +96,9 @@ const game = {
     } else if (q.emoji) {
       emojiEl.textContent = q.emoji;
     }
-    document.getElementById('p-item').textContent = q.item;
+    document.getElementById('p-item').textContent = I18n.t('questions.' + q.id + '.item');
     document.getElementById('p-contador').textContent =
-      `${this.indiceAtual + 1} de ${this.questions.length}`;
+      I18n.t('ui.game.counter', { current: this.indiceAtual + 1, total: this.questions.length });
     document.getElementById('pontuacao-num').textContent = this.score;
 
     const container = document.getElementById('container-lixeiras');
@@ -107,7 +107,7 @@ const game = {
     this.lixeiras.forEach(bin => {
       const btn = document.createElement('button');
       btn.className = `btn-lixeira ${bin.color}`;
-      btn.innerHTML = `<span class="icone-lixeira">♻️</span><span class="rotulo-lixeira">${bin.nomeCor}</span>`;
+      btn.innerHTML = `<span class="icone-lixeira">\u267B\uFE0F</span><span class="rotulo-lixeira">${I18n.t('binLabels.' + bin.corKey)}</span>`;
       btn.dataset.binId = bin.id;
       btn.addEventListener('click', () => this.verificarResposta(bin.id));
       container.appendChild(btn);
@@ -185,7 +185,7 @@ const game = {
       document.getElementById('pontuacao-num').textContent = this.score;
       this.atualizarStreak();
       document.getElementById('feedback-bonus').textContent =
-        bonusTempo > 0 ? `⚡ +${bonusTempo} de bônus por rapidez!` : '';
+        bonusTempo > 0 ? I18n.t('ui.feedback.bonus', { points: bonusTempo }) : '';
       this.tocarSom('correct');
     } else {
       this.streak = 1;
@@ -199,27 +199,28 @@ const game = {
   },
 
   mostrarFeedback(correct, q) {
+    this._ultimoAcerto = correct;
+    this._ultimaPergunta = q;
     const overlay = document.getElementById('sobreposicao-feedback');
     const icon = document.getElementById('feedback-icon');
     const title = document.getElementById('feedback-title');
     const explanation = document.getElementById('feedback-explanation');
     const tip = document.getElementById('feedback-tip');
-    const nomeCor = this.coresCategorias[q.category];
-    const categoryName = this.nomesCategorias[q.category];
+    const nomeCor = I18n.t('categoryColors.' + q.category);
 
     if (correct) {
-      icon.textContent = '🎉';
-      title.textContent = 'Parabéns!';
+      icon.textContent = '\u{1F389}';
+      title.textContent = I18n.t('ui.feedback.correct');
       title.className = 'feedback-title correct';
-      explanation.textContent = q.explanation;
+      explanation.textContent = I18n.t('questions.' + q.id + '.explanation');
     } else {
-      icon.textContent = '🤔';
-      title.textContent = 'Quase!';
+      icon.textContent = '\u{1F914}';
+      title.textContent = I18n.t('ui.feedback.wrong');
       title.className = 'feedback-title wrong';
-      explanation.textContent = `A lixeira certa é a ${nomeCor}. ${q.explanation}`;
+      explanation.textContent = I18n.t('ui.feedback.wrongPrefix') + ' ' + nomeCor + '. ' + I18n.t('questions.' + q.id + '.explanation');
     }
 
-    tip.textContent = `💡 ${q.tip}`;
+    tip.textContent = '\u{1F4A1} ' + I18n.t('questions.' + q.id + '.tip');
     overlay.classList.add('show');
 
     if (correct) {
@@ -250,17 +251,17 @@ const game = {
     let stars, message;
 
     if (pct >= 0.9) {
-      stars = '⭐⭐⭐';
-      message = 'Você é um mestre! O planeta agradece!';
+      stars = '\u2B50\u2B50\u2B50';
+      message = I18n.t('ui.finish.messages.excellent');
     } else if (pct >= 0.7) {
-      stars = '⭐⭐';
-      message = 'Muito bem! Continue assim!';
+      stars = '\u2B50\u2B50';
+      message = I18n.t('ui.finish.messages.good');
     } else if (pct >= 0.5) {
-      stars = '⭐';
-      message = 'Bom começo! Com prática você vai melhorar!';
+      stars = '\u2B50';
+      message = I18n.t('ui.finish.messages.average');
     } else {
-      stars = '💪';
-      message = 'Você está aprendendo. Tente de novo!';
+      stars = '\u{1F4AA}';
+      message = I18n.t('ui.finish.messages.bad');
     }
 
     document.getElementById('finish-stars').textContent = stars;
@@ -365,6 +366,9 @@ const game = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+  I18n.init();
+  I18n.apply();
+
   const overlay = document.getElementById('loading-overlay');
   const loadingText = document.getElementById('loading-text');
   const totalImgs = questions.filter(q => q.image).length;
@@ -375,7 +379,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const img = new Image();
     img.onload = img.onerror = () => {
       loadedImgs++;
-      loadingText.textContent = `Carregando (${loadedImgs}/${totalImgs})...`;
+      loadingText.textContent = I18n.t('ui.loading', { loaded: loadedImgs, total: totalImgs });
       if (loadedImgs >= totalImgs) {
         overlay.style.display = 'none';
       }
@@ -472,7 +476,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const nome = input.value.trim();
     if (nome.length < 2) {
       input.style.borderColor = '#E74C3C';
-      input.placeholder = 'Digite pelo menos 2 letras';
+      input.placeholder = I18n.t('ui.modal.validationError');
       return;
     }
     input.style.borderColor = '#2D3436';
@@ -491,8 +495,8 @@ document.addEventListener('DOMContentLoaded', () => {
   function atualizarBotoesMusica() {
     const playing = AudioManager.isPlaying();
     document.querySelectorAll('#btn-musica, #btn-musica-jogo').forEach(btn => {
-      btn.textContent = playing ? '🔊' : '🔇';
-      btn.title = playing ? 'Desativar música ambiente' : 'Ativar música ambiente';
+      btn.textContent = playing ? '\u{1F50A}' : '\u{1F507}';
+      btn.title = playing ? I18n.t('ui.music.on') : I18n.t('ui.music.off');
       if (btn.id === 'btn-musica-jogo') {
         btn.classList.toggle('active', playing);
       }
@@ -509,5 +513,13 @@ document.addEventListener('DOMContentLoaded', () => {
     AudioManager.toggle();
     atualizarBotoesMusica();
     if (AudioManager.isPlaying()) game.tocarSom('start');
+  });
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      I18n.setLocale(btn.dataset.lang);
+      atualizarBotoesMusica();
+      game.atualizarIdioma();
+    });
   });
 });

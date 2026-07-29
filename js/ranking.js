@@ -59,12 +59,12 @@ const ranking = {
       container.innerHTML = '';
       if (lista === null) {
         erro.style.display = 'block';
-        erro.textContent = 'Ranking indisponível no momento.';
+        erro.textContent = I18n.t('ranking.error');
         return;
       }
       if (lista.length === 0) {
         erro.style.display = 'block';
-        erro.textContent = 'Nenhuma pontuação registrada ainda. Seja o primeiro!';
+        erro.textContent = I18n.t('ranking.emptyGlobal');
         return;
       }
       lista.forEach((item, i) => {
@@ -76,7 +76,7 @@ const ranking = {
         div.innerHTML = `
           <span class="ranking-pos">${i + 1}º</span>
           <span class="ranking-nome">${escapeHtml(item.nome)}</span>
-          <span class="ranking-score">${item.score} pts</span>
+          <span class="ranking-score">${I18n.t('ranking.points', { score: item.score })}</span>
         `;
         container.appendChild(div);
       });
@@ -122,7 +122,7 @@ const ranking = {
 
       if (lista.length === 0) {
         erro.style.display = 'block';
-        erro.textContent = 'Nenhuma pontuação registrada ainda. Vá jogar!';
+        erro.textContent = I18n.t('ranking.emptyLocal');
         return;
       }
 
@@ -136,7 +136,7 @@ const ranking = {
         div.innerHTML = `
           <span class="ranking-pos">${i + 1}º</span>
           <span class="ranking-nome">${escapeHtml(item.nome)}</span>
-          <span class="ranking-score">${item.score} pts</span>
+          <span class="ranking-score">${I18n.t('ranking.points', { score: item.score })}</span>
         `;
         container.appendChild(div);
       });

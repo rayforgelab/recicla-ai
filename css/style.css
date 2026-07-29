@@ -352,6 +352,47 @@ body::before {
   box-shadow: 0 1px 0 #2D3436;
 }
 
+.lang-selector {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 6px;
+  z-index: 500;
+  background: rgba(255,255,255,0.9);
+  padding: 6px 10px;
+  border-radius: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  backdrop-filter: blur(4px);
+}
+
+.lang-btn {
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  line-height: 1;
+}
+
+.lang-btn:hover {
+  border-color: #2D3436;
+  transform: scale(1.1);
+}
+
+.lang-btn.active {
+  border-color: #2D3436;
+  box-shadow: 0 0 0 2px var(--color-orange);
+  background: rgba(255, 165, 0, 0.1);
+}
+
 .question-card {
   background: var(--color-card);
   border-radius: var(--radius);
